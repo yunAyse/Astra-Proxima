@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!
+{% endblock %}
+
+{% block body %}
+	{% for event in events %}
+		<div class="">
+			{% for file in event.fileId %}
+				<img src="{{asset('assets/images/' ~ file.url)}}" alt="Event Image" />
+			{% endfor %}
+
+			<h1>{{ event.title }}</h1>
+			<p>{{ event.content }}</p>
+		</div>
+	{% endfor %}
+{% endblock %}
