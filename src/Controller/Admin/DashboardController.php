@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Chat;
 use App\Entity\Event;
 use App\Entity\Files;
 use App\Entity\Tag;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -44,5 +46,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Files', 'fa-solid fa-file-image', Files::class);
         yield MenuItem::linkToCrud('Article', 'fa-solid fa-star', Article::class);
         yield MenuItem::linkToCrud('Tag', 'fa-solid fa-hashtag', Tag::class);
+        yield MenuItem::linkToCrud('User', 'fa-solid fa-user-astronaut', User::class);
+        yield MenuItem::linkToCrud('Chat', 'fa-solid fa-message', Chat::class);
     }
 }
