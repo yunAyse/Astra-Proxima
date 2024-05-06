@@ -2,78 +2,88 @@
 
 namespace App\Controller;
 
-use App\Entity\Tag;
 use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/user')]
 class UserController extends AbstractController
 {
-    private $security;
-
-    public function __construct(Security $security) {
-        $this->security = $security;
-    }
-
-    #[Route('/user', name: 'app_user')]
-    public function user(UserRepository $userRepository, Tag $tag): Response
+    #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    public function index(UserRepository $userRepository): Response
     {
-
-        $user = $this->security->getUser();
-
-        $userName = '';
-        if ($user instanceof User) {
-            $userName = $user->getFirstName();
-        }
-
-        $userTag = $userRepository->getTagId($tag);
-        dd($userTag);
-
-
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-            'user_name' => $userName
+            'users' => $userRepository->findAll(),
         ]);
     }
 
-    #[Route('/user/{id}/follow', name: 'tag_follow')]
-    public function followTag(Tag $tag, EntityManagerInterface $entityManager, SessionInterface $session)
+    #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-        if (!$user instanceof User) {
-            // throw new \Exception('User is not valid');
-            $session->getFlashBag()->add('error', 'You must be logged in to follow a tag.');
-            return $this->redirectToRoute('app_article');
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        $user->addTag($tag);
-        $entityManager->flush();
-
-        $session->getFlashBag()->add('success', 'Tag unfollowed successfully.');
-        return $this->redirectToRoute('app_user');
-
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
     }
 
-    #[Route('/user/{id}/follow', name: 'tag_unfollow')]
-    public function unfollowTag(Tag $tag, EntityManagerInterface $entityManager, SessionInterface $session) {
-        $user = $this->getUser();
-        if (!$user instanceof User) {
-            // throw new \Exception('User is not valid');
-            $session->getFlashBag()->add('error', 'You must be logged in to unfollow a tag.');
-            return $this->redirectToRoute('app_article');
+    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
+    public function show(User $user): Response
+    {
+        dd($user);
+
+        return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        $user->removeTag($tag);
-        $entityManager->flush();
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
 
-        $session->getFlashBag()->add('success', 'Tag unfollowed successfully.');
-        return $this->redirectToRoute('app_user');
+    #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
+    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->get('_token'))) {
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/tag/{id}', name: 'app_user_tag', methods: ['POST'])]
+    public function userTag(User $user, UserRepository $userRepository) 
+    {
+        dd($user);
     }
 }

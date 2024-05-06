@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Tag; // Import the Tag entity if it's not already imported
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
