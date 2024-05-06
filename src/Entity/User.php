@@ -63,11 +63,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+    private $followedTags;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
         $this->articles = new ArrayCollection();
         $this->chats = new ArrayCollection();
+        $this->followedTags = new ArrayCollection();
     }
 
     public function getId(): ?int
