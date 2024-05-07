@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,10 +44,20 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, EntityManagerInterface $entityManager): Response
     {
-        dd($user);
-
+        $query = $entityManager->createQuery(
+            'SELECT user.id, user.firstName, user.lastName, user.email FROM App\Entity\User user WHERE user.id = :id'
+        )->setParameter('id', $user->getId());
+    
+        $user = $query->getOneOrNullResult();
+    
+        if ($user === null) {
+            throw $this->createNotFoundException('User not found');
+        }
+    
+        dd($user); // Dumping to check the result
+    
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
