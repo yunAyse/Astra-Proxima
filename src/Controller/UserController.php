@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -46,22 +47,23 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user, EntityManagerInterface $entityManager): Response
     {
-        $query = $entityManager->createQuery(
-            'SELECT user.id, user.firstName, user.lastName, user.email FROM App\Entity\User user WHERE user.id = :id'
-        )->setParameter('id', $user->getId());
-    
-        $user = $query->getOneOrNullResult();
-    
         if ($user === null) {
             throw $this->createNotFoundException('User not found');
         }
     
-        dd($user); // Dumping to check the result
+        // Fetch the user entity from the repository using its ID
+        $user = $entityManager->getRepository(User::class)->find($user->getId());
     
+        // Assuming the relationship between User and Tag entities is set up correctly
+        $followedTags = $user->getTags(); // Assuming you have a method named getTags() in your User entity
+    
+        dd($followedTags);
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'userTags' => $followedTags
         ]);
     }
+    
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
@@ -84,7 +86,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }
@@ -93,7 +95,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/tag/{id}', name: 'app_user_tag', methods: ['POST'])]
-    public function userTag(User $user, UserRepository $userRepository) 
+    public function userTag(User $user, UserRepository $userRepository)
     {
         dd($user);
     }

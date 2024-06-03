@@ -22,6 +22,7 @@ class ArticleCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('title'),
+            TextField::new('description'),
             TextEditorField::new('content'),
             AssociationField::new('authorId', 'Author')->setFormTypeOptions([
                 'choice_label' => 'firstName',

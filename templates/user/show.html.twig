@@ -6,23 +6,7 @@
     <h1>User</h1>
 
     <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
+        <tbody class="flex flex-col justify-start">
             <tr>
                 <th>FirstName</th>
                 <td>{{ user.firstName }}</td>
@@ -32,8 +16,8 @@
                 <td>{{ user.lastName }}</td>
             </tr>
             <tr>
-                <th>IsVerified</th>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
             </tr>
         </tbody>
     </table>
