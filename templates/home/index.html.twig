@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<section id="homepage_hero">
+	<section class="flex justify-center content-end flex-wrap pb-36" id="homepage_hero">
 
-	<h1 class="text-3xl font-bold text-pink-500">
-		Welcome Home
-	</h1>
+		<aside
+			class="absolute left-0 w-1/4">
+			{# aside container div #}
+			<div>
+				{# logo's div #}
+				<div class="flex flex-col w-1/4">
+					<img class="" src="{{asset('assets/icons/sidebar/alien-extraterrestrial-fiction-svgrepo-com.png')}}"/>
+					<img class="w-2" src="{{asset('assets/icons/sidebar/message-circle-dots-svgrepo-com.png')}}"/>
+					<img class="w-2" src="{{asset('assets/icons/sidebar/instagram-outline-svgrepo-com.png')}}"/>
+					<img class="w-2" src="{{asset('assets/icons/sidebar/Twitter-X-White-Logo-PNG.png')}}"/>
+				</div>
+			</div>
+		</aside>
 
-</section>
+		<div class="flex flex-col justify-center text-neutral-50">
+			<h6 class="kanit-extralight">Enter the realm of the heavens, where each twinkling star has a 
+								story to tell. Welcome to our space odyssey!</h6>
+			<h3 class="kanit-extralight tracking-widest">Welcome To</h3>
+			<h1 class="kanit-semibold tracking-[40px]">ASTRA PROXIMA</h1>
+		</div>
+
+	</section>
 {% endblock %}

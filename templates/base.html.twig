@@ -10,17 +10,20 @@
 			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
 			<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-			<link rel="stylesheet" href="{{ asset('styles/pages/home.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/styles/pages/home.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/styles/base/general.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/styles/base/reset.css') }}">
+			
 
 		{% endblock %}
 
 		{# {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %} #}
+		            {% block importmap %}{{ importmap('app') }}{% endblock %}
+		        {% endblock %} #}
 	</head>
 	<body>
 
-
+{# 
 		<div>
 			<a class="bg-green-200 border-2 border-slate-500" href="{{ path('app_login') }}">
 				Log In
@@ -28,7 +31,30 @@
 			<a class="bg-pink-200 border-2 border-slate-500" href="{{ path('app_register') }}">
 				Sign Up
 			</a>
-		</div>
+		</div> #}
+
+		<header class="w-full absolute flex justify-center">
+			<div class="flex gap-36 ">
+			{# header logo #}
+				<div class="w-32">
+					<img src="{{ asset('assets/icons/header/logo-astra-proxima.png')}}"/>
+				</div>
+				{# navbar links #}
+				<nav class="flex justify-center content-center flex-wrap">
+				<ul class="flex gap-9 text-neutral-50 kanit-light tracking-[5px]">
+				<li>LIBRARY</li>
+				<li>GUIDE</li>
+				<li>ASTROPHOTOGRAPHY</li>
+				<li>MOON</li>
+				<li>CONTACT</li>
+				</ul>
+				</nav>
+				{# search bar icon #}
+				<div class="w-24 flex flex-wrap justify-start content-center">
+					<img class="w-1/4" src="{{ asset('assets/icons/header/search-svgrepo-com.png')}}"/>
+				</div>
+			</div>
+		</header>
 		{% block body %}{% endblock %}
 
 		{% block javascripts %}
