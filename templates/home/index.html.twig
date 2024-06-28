@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<section class="flex justify-center content-end flex-wrap pb-36" id="homepage_hero">
 
-		<aside
-			class="absolute left-0 top-1/4 w-1/4">
-			{# aside container div #}
+	{# HERO SECTION #}
+	<section
+		class="flex justify-center content-end flex-wrap pb-36" id="homepage__hero">
+
+		{# aside container div #}
+		<aside class="absolute left-0 top-1/4 w-1/4">
 			<div>
 				{# logo's div #}
 				<div class="flex flex-col gap-12 justify-center content-center flex-wrap w-1/4">
@@ -16,13 +18,79 @@
 				</div>
 			</div>
 		</aside>
-
+		{# title container  #}
 		<div class="flex flex-col justify-center text-neutral-50">
 			<h6 class="kanit-extralight">Enter the realm of the heavens, where each twinkling star has a 
-								story to tell. Welcome to our space odyssey!</h6>
+															story to tell. Welcome to our space odyssey!</h6>
 			<h3 class="kanit-extralight tracking-widest">Welcome To</h3>
 			<h1 class="kanit-semibold tracking-[40px]">ASTRA PROXIMA</h1>
 		</div>
 
+	</section>
+
+	{# ABOUT SECTION #}
+	<section
+		class="px-96 py-24" id="homepage__about">
+		{# container #}
+		<div
+			class="w-full flex flex-col gap-y-20">
+			{# section title #}
+			<div>
+				<h2 class="kanit-extralight tracking-widest neon">ABOUT ASTRA PROXIMA</h2>
+			</div>
+
+			{# paragraphs container #}
+			<div
+				class="kanit-light flex flex-col flex-wrap gap-9">
+				{# each paragraph's divs #}
+				<div>
+					<p>Here at Astra Proxima, we believe that the wonders of the universe are meant to be explored and shared. Our blog is dedicated to making the vastness of space more accessible and understandable to everyone.
+					</p>
+				</div>
+				<div class="flex justify-end">
+					<p class="text-end">From captivating articles about the latest discoveries in astronomy to practical tips for amateur stargazers, we strive to be your go-to resource for all things space-related.
+					</p>
+				</div>
+				<div>
+					<p>Whether you're seeking inspiration, education, or simply a sense of wonder, we invite you to join us as we delve into the mysteries of the cosmos and celebrate the marvels of the universe together.</p>
+				</div>
+			</div>
+
+			{# button container #}
+			<div class="flex justify-center">
+				<button class=" button-neon py-8 px-6 kanit-extralight tracking-widest text-m">GET IN TOUCH WITH US</button>
+			</div>
+		</div>
+	</section>
+
+	{# RECENT EVENTS SECTION  #}
+	<section
+		class="px-96 py-24" id="homepage__events">
+		{# container #}
+		<div>
+			{# section title #}
+			<div>
+				<h2 class="kanit-extralight tracking-widest neon">RECENT EVENTS & NEWS</h2>
+			</div>
+
+			{# event cards container  #}
+			<div>
+
+				{# each cards #}
+				{# for now these are static cards but when doing the backend It's gonna be dynamic  #}
+				{# image div #}
+					<div>
+						<div>
+					<img src="" alt=""></div>
+					{# text div #}
+					<div>
+					<h5></h5>
+
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
 	</section>
 {% endblock %}
