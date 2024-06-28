@@ -21,7 +21,7 @@
 		{# title container  #}
 		<div class="flex flex-col justify-center text-neutral-50">
 			<h6 class="kanit-extralight">Enter the realm of the heavens, where each twinkling star has a 
-															story to tell. Welcome to our space odyssey!</h6>
+																																																																																																			story to tell. Welcome to our space odyssey!</h6>
 			<h3 class="kanit-extralight tracking-widest">Welcome To</h3>
 			<h1 class="kanit-semibold tracking-[40px]">ASTRA PROXIMA</h1>
 		</div>
@@ -67,30 +67,67 @@
 	<section
 		class="px-96 py-24" id="homepage__events">
 		{# container #}
-		<div>
+		<div
+			class="flex flex-col gap-9">
 			{# section title #}
-			<div>
-				<h2 class="kanit-extralight tracking-widest neon">RECENT EVENTS & NEWS</h2>
-			</div>
+			<div class="flex justify-start">
+				<h2 class="kanit-extralight tracking-widest neon">RECENT EVENTS
+				</br>
+				& NEWS</h2>
+		</div>
 
-			{# event cards container  #}
-			<div>
-
-				{# each cards #}
-				{# for now these are static cards but when doing the backend It's gonna be dynamic  #}
+		{# event cards container  #}
+		<div class="px-14 py-8 bg-[#ffffff0f] flex justify-center gap-7">
+			{# each cards #}
+			{# for now these are static cards but when doing the backend It's gonna be dynamic  #}
+				<div
+				class="w-1/3 flex flex-col "> 
 				{# image div #}
-					<div>
-						<div>
-					<img src="" alt=""></div>
-					{# text div #}
-					<div>
-					<h5></h5>
-
-					</div>
-					
+				<div>
+					<img class="object-cover rounded-t-lg" src="{{asset('assets/styles/image/ProximaCentauriB_Close.jpeg')}}" alt="example image">
+				</div>
+				{# text div #}
+				<div class="flex flex-col gap-4 bg-[#01010146] p-3 rounded-b-lg">
+					<h6>Lorem Ipsum</h6>
+					<p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga recusandae consectetur accusantium pariatur enim veritatis expedita esse, eos labore unde deleniti fugit, soluta!</p>
+					<a href="#" class="kanit-light text-sm underline decoration-1">Read More</a>
 				</div>
 
 			</div>
+			<div
+				class="w-1/3 flex flex-col">
+				{# image div #}
+				<div><img class="object-cover rounded-t-lg" src="{{asset('assets/styles/image/ProximaCentauriB_Close.jpeg')}}" alt="example image">
+				</div>
+				{# text div #}
+				<div class="flex flex-col gap-4 bg-[#01010146] p-3 rounded-b-lg">
+					<h6>Lorem Ipsum</h6>
+					<p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga recusandae consectetur accusantium pariatur enim veritatis expedita esse, eos labore unde deleniti fugit, soluta!</p>
+					<a href="#" class="kanit-light text-sm underline decoration-1">Read More</a>
+				</div>
+
+			</div>
+
+			<div
+				class="w-1/3 flex flex-col">
+				{# image div #}
+				<div><img class="object-cover rounded-t-lg" src="{{asset('assets/styles/image/ProximaCentauriB_Close.jpeg')}}" alt="example image">
+				</div>
+				{# text div #}
+				<div class="flex flex-col gap-4 bg-[#01010146] p-3 rounded-b-lg">
+					<h6>Lorem Ipsum</h6>
+					<p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga recusandae consectetur accusantium pariatur enim veritatis expedita esse, eos labore unde deleniti fugit, soluta!</p>
+					<a href="#" class="kanit-light text-sm underline decoration-1">Read More</a>
+				</div>
+
+			</div>
+
 		</div>
-	</section>
-{% endblock %}
+
+		{# sub text and link container  #}
+		<div class="flex flex-col content-center flex-wrap justify-center text-center">
+		<p class="uppercase text-md">Want to learn more about what’s happening ?</p>
+		<a href="#" class="uppercase underline kanit-bold tracking-widest text-sm te">Then Come Here</a>
+		</div>
+	</div>
+</section>{% endblock %}
