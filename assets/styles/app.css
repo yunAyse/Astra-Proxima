@@ -51,43 +51,78 @@
         z-index: -1;
         background: #51869D;
         box-shadow:
-         0 0 20px  #51869D;
+        0 0 20px  #51869D;
         transition: all 0.3s ease;
-      }
-      .trailer__button-neon:hover {
+    }
+    .trailer__button-neon:hover {
         color: #fff;
-      }
-      .trailer__button-neon:hover:after {
+    }
+    .trailer__button-neon:hover:after {
         left: 0;
         width: 100%;
-      }
-      .trailer__button-neon:active {
+    }
+    .trailer__button-neon:active {
         top: 2px;
-      }
-      
-      /* the buttons texts neon */
-      .trailer__button-text-neon {
-          color: #51869D;
-          text-shadow: 0 0 5px #51869D, 0 0 10px #51869D;
-      }
-
-      /* the titles borders neon  */
-    .trailer__title-neon {
-        @apply border-b-2 border-[#234A6A] rounded-sm;
-        position: relative;
     }
     
+    /* the buttons texts neon */
+    .trailer__button-text-neon {
+        color: #51869D;
+        text-shadow: 0 0 5px #51869D, 0 0 10px #51869D;
+    }
+    /* the titles borders neon  */
+    .trailer__title-neon {
+    @apply border-b-2 border-[#234A6A] rounded-sm;
+    position: relative;
+    }
     .trailer__title-neon::after {
-        content: '';
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Adjust based on the border thickness */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Match the border thickness */
+    box-shadow: 0 0 10px #234A6A, 0 0 20px #234A6A, 0 0 30px #234A6A, 0 0 40px #234A6A, 0 0 45px #234A6A, 0 0 55px #234A6A, 0 0 65px #234A6A;
+    }
+
+    /* sign in button in trailer section  */
+    .signin-button-neon {
+        @apply text-[#fff] border border-[#fff] bg-[#ffffff24];
+        box-shadow: 0 0 5px #fff, 0 0 5px #fff inset;
+        /* transition: all 0.5s ease; */
+        position: relative;
+        z-index: 1;
+    }
+    /* all for the hover and active effects  */
+    .signin-button-neon:after {
         position: absolute;
-        bottom: -2px; /* Adjust based on the border thickness */
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        background: #fff;
+        box-shadow:
+        0 0 20px  #fff;
+        transition: all 0.3s ease;
+    }
+    .signin-button-neon:hover {
+        color: #234A6A;
+    }
+    .signin-button-neon:hover:after {
         left: 0;
         width: 100%;
-        height: 2px; /* Match the border thickness */
-        box-shadow: 0 0 10px #234A6A, 0 0 20px #234A6A, 0 0 30px #234A6A, 0 0 40px #234A6A, 0 0 45px #234A6A, 0 0 55px #234A6A, 0 0 65px #234A6A;
+    }
+    .signin-button-neon:active {
+        top: 2px;
+    }
+    /* the buttons texts neon */
+    .signin-button-text-neon {
+        color: #fff;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff;
     }
     
-
 }
   
 

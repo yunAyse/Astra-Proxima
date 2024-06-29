@@ -13,41 +13,52 @@
 			<link rel="stylesheet" href="{{ asset('assets/styles/pages/home.css') }}">
 			<link rel="stylesheet" href="{{ asset('assets/styles/base/general.css') }}">
 			<link rel="stylesheet" href="{{ asset('assets/styles/base/reset.css') }}">
-			
+
 
 		{% endblock %}
 
 		{# {% block javascripts %}
-		            {% block importmap %}{{ importmap('app') }}{% endblock %}
-		        {% endblock %} #}
+										            {% block importmap %}{{ importmap('app') }}{% endblock %}
+										        {% endblock %} #}
 	</head>
 	<body>
 
-{# 
-		<div>
-			<a class="bg-green-200 border-2 border-slate-500" href="{{ path('app_login') }}">
-				Log In
-			</a>
-			<a class="bg-pink-200 border-2 border-slate-500" href="{{ path('app_register') }}">
-				Sign Up
-			</a>
-		</div> #}
+		{# 
+										<div>
+											<a class="bg-green-200 border-2 border-slate-500" href="{{ path('app_login') }}">
+												Log In
+											</a>
+											<a class="bg-pink-200 border-2 border-slate-500" href="{{ path('app_register') }}">
+												Sign Up
+											</a>
+										</div> #}
 
 		<header class="w-full absolute flex justify-center">
-			<div class="flex gap-36 ">
-			{# header logo #}
+			<div
+				class="flex gap-36 ">
+				{# header logo #}
 				<div class="w-32">
 					<img src="{{ asset('assets/icons/header/logo-astra-proxima.png')}}"/>
 				</div>
 				{# navbar links #}
 				<nav class="flex justify-center content-center flex-wrap">
-				<ul class="flex gap-9 text-neutral-50 kanit-light tracking-[5px] no-underline">
-				<li><a href="#">LIBRARY</a></li>
-				<li><a href="#">GUIDE</a></li>
-				<li><a href="#">ASTROPHOTOGRAPHY</a></li>
-				<li><a href="#">MOON</a></li>
-				<li><a href="#">CONTACT</a></li>
-				</ul>
+					<ul class="flex gap-9 text-neutral-50 kanit-light tracking-[5px] no-underline">
+						<li>
+							<a href="#">LIBRARY</a>
+						</li>
+						<li>
+							<a href="#">GUIDE</a>
+						</li>
+						<li>
+							<a href="#">ASTROPHOTOGRAPHY</a>
+						</li>
+						<li>
+							<a href="#">MOON</a>
+						</li>
+						<li>
+							<a href="#">CONTACT</a>
+						</li>
+					</ul>
 				</nav>
 				{# search bar icon #}
 				<div class="w-24 flex flex-wrap justify-start content-center">
@@ -56,6 +67,63 @@
 			</div>
 		</header>
 		{% block body %}{% endblock %}
+
+		<footer
+			class="px-72 py-24" id="footer">
+			{# container #}
+			<div class="w-full">
+				<nav>
+					<ul class="flex justify-between tracking-[8px]">
+					{# explore links #}
+						<li class="flex flex-col flex-wrap content-center justify-start gap-3">
+							<h6 class="kanit-medium">EXPLORE</h6>
+							<div class="flex flex-col justify-center content-center flex-wrap text-center gap-2 capitalize tracking-widest lato-light">
+								<a href="">home</a>
+								<a href="">library</a>
+								<a href="">guide</a>
+								<a href="">astrophotography</a>
+								<a href="">moon</a>
+								<a href="">contact</a>
+							</div>
+						</li>
+					{# credit links #}
+						<li class="flex flex-col flex-wrap content-center justify-start gap-3">
+							<h6 class="kanit-medium">CREDITS</h6>
+							<div class="flex flex-col justify-center content-center flex-wrap text-center gap-2 capitalize tracking-widest lato-light">
+							<a href="">images</a>
+							<a href="">sources</a>
+							</div>
+						</li>
+					{# logo #}
+						<li class="flex flex-col flex-wrap text-center justify-center content-center">
+
+							<h3 class="kanit-bold">ASTRA </br> PROXIMA</h3>
+							<a href="#homepage__hero" class="flex justify-center"><img class="w-1/3" src="{{asset('assets/icons/header/logo-astra-proxima.png')}}" alt="logo astra proxima">
+							</a>
+						</li>
+					{# follow links #}
+						<li class="flex flex-col flex-wrap content-center justify-start gap-3">
+							<h6 class="kanit-medium">FOLLOW</h6>
+							<div class="flex flex-col justify-center content-center flex-wrap text-center gap-2 capitalize tracking-widest lato-light">
+							<a href="">twitter</a>
+							<a href="">instagram</a>
+							</div>
+						</li>
+					{# legacy links #}
+						<li class="flex flex-col flex-wrap content-center justify-start gap-3">
+							<h6 class="kanit-medium text-center">LEGAL</h6>
+							<div class="flex flex-col justify-center content-center flex-wrap text-center gap-2 capitalize tracking-widest lato-light">
+							<a href="">Privacy & Policy</a>
+							<a href="">Terms & Conditions</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<div class="flex justify-end">
+				<p>© 2024 Astra Proxima</p>
+				</div>
+			</div>
+		</footer>
 
 		{% block javascripts %}
 			<script src="{{ asset('assets/js/script.js') }}"></script>
