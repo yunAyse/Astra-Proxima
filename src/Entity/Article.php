@@ -50,6 +50,7 @@ class Article
     {
         $this->tagId = new ArrayCollection();
         $this->fileId = new ArrayCollection();
+        $this->publishedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

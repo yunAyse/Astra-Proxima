@@ -11,6 +11,7 @@
 
 			<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 			<link rel="stylesheet" href="{{ asset('assets/styles/pages/home.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/styles/pages/article.css') }}">
 			<link rel="stylesheet" href="{{ asset('assets/styles/base/general.css') }}">
 			<link rel="stylesheet" href="{{ asset('assets/styles/base/reset.css') }}">
 
@@ -18,20 +19,20 @@
 		{% endblock %}
 
 		{# {% block javascripts %}
-										            {% block importmap %}{{ importmap('app') }}{% endblock %}
-										        {% endblock %} #}
+			{% block importmap %}{{ importmap('app') }}{% endblock %}
+		{% endblock %} #}
 	</head>
 	<body>
 
-		{# 
-										<div>
-											<a class="bg-green-200 border-2 border-slate-500" href="{{ path('app_login') }}">
-												Log In
-											</a>
-											<a class="bg-pink-200 border-2 border-slate-500" href="{{ path('app_register') }}">
-												Sign Up
-											</a>
-										</div> #}
+	{# 
+		<div>
+			<a class="bg-green-200 border-2 border-slate-500" href="{{ path('app_login') }}">
+				Log In
+			</a>
+			<a class="bg-pink-200 border-2 border-slate-500" href="{{ path('app_register') }}">
+				Sign Up
+			</a>
+		</div> #}
 
 		<header class="w-full absolute flex justify-center">
 			<div
@@ -44,7 +45,7 @@
 				<nav class="flex justify-center content-center flex-wrap">
 					<ul class="flex gap-9 text-neutral-50 kanit-light tracking-[5px] no-underline">
 						<li>
-							<a href="#">LIBRARY</a>
+							<a href="{{path('app_article')}}">LIBRARY</a>
 						</li>
 						<li>
 							<a href="#">GUIDE</a>

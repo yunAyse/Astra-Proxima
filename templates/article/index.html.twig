@@ -2,15 +2,80 @@
 
 {% block body %}
 
-{% for flash_message in app.session.flashbag.get('error') %}
-    <div class="alert alert-danger text-2xl bg-red-300" role="alert">
-        {{ flash_message }}
-    </div>
-{% endfor %}
+	{# {% for flash_message in app.session.flashbag.get('error') %}
+						<div class="alert alert-danger text-2xl bg-red-300" role="alert">
+							{{ flash_message }}
+						</div>
+					{% endfor %} #}
 
-{% for tag in tags %}
-    <button class="p-3 bg-blue-900 text-white follow-tag" type="button" data-tag-id={{ tag.id }}> {{tag.tagName}} </button>
-    <button class="bg-blue-900 text-white unfollow-tag" type="button" data-tag-id="{{ tag.id }}"><img src="{{ asset('assets/icons/close-icon.png') }}" alt="close icon" class="w-[30px]" ></button>
-{% endfor %}
+	{# {% for tag in tags %}
+						    <button class="p-3 bg-blue-900 text-white follow-tag" type="button" data-tag-id={{ tag.id }}> {{tag.tagName}} </button>
+						    <button class="bg-blue-900 text-white unfollow-tag" type="button" data-tag-id="{{ tag.id }}"><img src="{{ asset('assets/icons/close-icon.png') }}" alt="close icon" class="w-[30px]" ></button>
+						{% endfor %} #}
+
+		<section
+		class="px-80 py-24 flex flex-wrap justify-center content-center" id="articlepage__hero"> {# container  #}
+		<div
+			class="flex flex-col flex-wrap justify-center content-center w-full h-full gap-16">
+			{# hero section text  #}
+			<div id="article__hero-paragraph" class="w-full flex justify-center text-center lato-regular text-lg p-10">
+				<p>Our goal is to empower enthusiasts of all levels with the knowledge and resources they need to explore the wonders of the universe. Whether you're a beginner or an expert, our library is here to inspire and inform your cosmic journey.</p>
+			</div>
+
+			{# filter and search bar container #}
+			<div
+				class="w-full flex flex-col flex-wrap content-center justify-center text-center gap-6">
+
+				{# search bar #}
+				<div>
+					<input class="article__searchbar" type="search" name="search" id="article__search" placeholder="Search...">
+				</div>
+
+				{# filter buttons #}
+				<div class="flex gap-4 tracking-widest kanit-light">
+					<button class="article__filter-button">All</button>
+					<button class="article__filter-button">Star</button>
+					<button class="article__filter-button">Constellation</button>
+					<button class="article__filter-button">Planet</button>
+					<button class="article__filter-button">Nebula</button>
+					<button class="article__filter-button">Galaxy</button>
+					<button class="article__filter-button">Black Holes</button>
+				</div>
+			</div>
+			<hr/>
+			<h3 class="kanit-extralight tracking-widest">ALL</h3>
+		</div>
+	</section>
+
+	<section
+		class="px-80 py-24" id="articlepage__articles">
+		{# container #}
+		<div
+			class="flex flex-wrap justify-content content-center">
+			{# article cards container #}
+			<div
+				class="w-full flex flex-wrap justify-center content-center gap-4">
+				{# article cards #}
+				{% for article in articles %}
+					<div
+						class="w-[30%] h-[400px] flex flex-col gap-4 bg-[#ffffff1a] p-3 ">
+						{# card image #}
+						<div class="">
+							{% for file in article.fileId %}
+								<img class="h-[160px] w-full object-cover" src="{{ asset('assets/images/' ~ file.url) }}" alt="">
+							{% endfor %}
+						</div>
+						{# card text #}
+						<div class="w-full flex flex-col flex-grow gap-2">
+							<h4 class="capitalize">{{article.title}}</h4>
+							<p class="text-sm overflow-hidden">{{article.description}}</p>
+						</div>
+						{# card link #}
+						<a href="/article/{{article.id}}">See the Article</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 
 {% endblock %}

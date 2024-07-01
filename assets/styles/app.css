@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer components {
+
+    /* HOME PAGE  */
     /* text neon */
     .neon {
       @apply text-white;
@@ -18,7 +20,6 @@
         transition: all 0.5s ease;
 
     }
-
     .button-neon:hover {
         text-shadow:
           0 0 5px rgba(255, 255, 255, 0.8),
@@ -29,7 +30,7 @@
           0 0 40px rgba(255, 255, 255, 0.4),
           0 0 50px rgba(255, 255, 255, 0.3),
           0 0 55px rgba(255, 255, 255, 0.2);
-      }
+    }
       
     /* trailers buttons neon  */
     .trailer__button-neon {
@@ -39,7 +40,6 @@
         position: relative;
         z-index: 1;
     }
-
     /* all for the hover and active effects  */
     .trailer__button-neon:after {
         position: absolute;
@@ -121,6 +121,16 @@
     .signin-button-text-neon {
         color: #fff;
         text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+    }
+
+    /* ARTICLE PAGE  */
+    
+    /* filter buttons  */
+    .article__filter-button {
+        @apply py-2 px-8 border-2 border-[#282B60] rounded-3xl text-white text-sm bg-[#282B6066];
+        box-shadow: 0 0 5px #282B60, 0 0 5px #282B60, 0 0 10px #282B60, 0 0 20px #282B60, 0 0 30px #282B60 inset;
+        transition: all 0.5s ease;
+
     }
     
 }
