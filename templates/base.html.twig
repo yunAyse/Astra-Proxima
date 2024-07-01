@@ -39,7 +39,9 @@
 				class="flex gap-36 ">
 				{# header logo #}
 				<div class="w-32">
+				<a href="{{path('app_home')}}">
 					<img src="{{ asset('assets/icons/header/logo-astra-proxima.png')}}"/>
+				</a>
 				</div>
 				{# navbar links #}
 				<nav class="flex justify-center content-center flex-wrap">
@@ -79,8 +81,8 @@
 						<li class="flex flex-col flex-wrap content-center justify-start gap-3">
 							<h6 class="kanit-medium">EXPLORE</h6>
 							<div class="flex flex-col justify-center content-center flex-wrap text-center gap-2 capitalize tracking-widest lato-light">
-								<a href="">home</a>
-								<a href="">library</a>
+								<a href="{{path('app_home')}}">home</a>
+								<a href="{{path('app_article')}}">library</a>
 								<a href="">guide</a>
 								<a href="">astrophotography</a>
 								<a href="">moon</a>
